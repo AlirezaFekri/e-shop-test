@@ -1,0 +1,10 @@
+import { configureStore } from "@reduxjs/toolkit";
+import favorites from "./slices/favorites";
+import products from "./slices/products";
+
+export const store = configureStore({
+  reducer: {
+    favorites,
+    products,
+  },
+});

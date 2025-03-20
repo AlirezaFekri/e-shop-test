@@ -1,13 +1,17 @@
 import { PropsWithChildren } from "react";
 import QueryClientWrapper from "@/src/wrapper/QueryClient";
 import "./globals.css";
+import ReduxWrapper from "../wrapper/Redux";
 
-export default function RootLayout({ children }: PropsWithChildren) {
+const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
       <body>
-        <QueryClientWrapper>{children}</QueryClientWrapper>
+        <ReduxWrapper>
+          <QueryClientWrapper>{children}</QueryClientWrapper>
+        </ReduxWrapper>
       </body>
     </html>
   );
-}
+};
+export default RootLayout;
