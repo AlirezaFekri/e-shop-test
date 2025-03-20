@@ -1,8 +1,12 @@
 import fs from "fs";
 import path from "path";
+import { NextRequest } from "next/server";
 import { Product } from "../../type";
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { id } = params;
 

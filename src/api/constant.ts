@@ -1,2 +1,1 @@
-export const PRODUCTS = (page = 1, limit = 30) =>
-  `/products?page=${page}&limit=${limit}`;
+export const PRODUCTS = (page = 1) => `/products?page=${page}&limit=32`;

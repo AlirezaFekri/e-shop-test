@@ -1,16 +1,16 @@
 import { PRODUCTS } from "@/src/api/constant";
 import { apiFetch } from "@/src/utils/fetchUtils";
-import { Product } from "./type";
+import { ProductsResponse } from "@/src/api/type";
 
-export const fetchProducts = async () => {
+export const fetchProducts = async (page: number) => {
   try {
-    const response = await apiFetch(PRODUCTS(), {
+    const response = await apiFetch(PRODUCTS(page, 32), {
       method: "GET",
       next: { revalidate: 5000 },
     });
     const responseData = await response.json();
 
-    const data: Product[] = responseData.products;
+    const data: ProductsResponse = responseData;
 
     return data;
   } catch (error) {

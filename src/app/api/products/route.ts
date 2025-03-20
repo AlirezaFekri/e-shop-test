@@ -5,7 +5,7 @@ import path from "path";
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const page = parseInt(searchParams.get("page") || "1");
-  const limit = parseInt(searchParams.get("limit") || "30");
+  const limit = parseInt(searchParams.get("limit") || "32");
 
   const filePath = path.join(process.cwd(), "data", "product.json");
 
