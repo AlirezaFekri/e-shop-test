@@ -1,4 +1,4 @@
-import { Product } from "@/src/app/api/products/type";
+import { Product } from "@/src/app/api/type";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [] as Product[];
@@ -7,8 +7,9 @@ const products = createSlice({
   name: "products",
   initialState,
   reducers: {
-    addProducts: (state, action) => {
-      return { ...state, action };
+    addProducts: (state, action: { payload: Product[] }) => {
+      const product = action.payload;
+      return { ...state, product };
     },
   },
 });

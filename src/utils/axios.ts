@@ -24,7 +24,6 @@ const generateAxiosInstance = ({
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "Client-Type": "web",
     },
     withCredentials,
     exclude: [],
