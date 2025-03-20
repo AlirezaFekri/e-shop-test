@@ -2,6 +2,7 @@
 
 import ProductCard from "@/src/components/ProductCard";
 import { RootState } from "@/src/redux/store";
+import { Suspense } from "react";
 import { useSelector } from "react-redux";
 
 const Page = () => {
@@ -17,11 +18,18 @@ const Page = () => {
         </div>
       ) : (
         <p className="text-center text-xl text-gray-500 mt-8">
-          You haven't added any favorites yet.
+          You have not added any favorites yet.
         </p>
       )}
     </div>
   );
 };
+const PageWrapper = () => {
+  return (
+    <Suspense>
+      <Page />
+    </Suspense>
+  );
+};
 
-export default Page;
+export default PageWrapper;

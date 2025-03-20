@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useMemo, useState } from "react";
+import { ChangeEvent, Suspense, useMemo, useState } from "react";
 import Pagination from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
 import { useGetProducts } from "../api";
@@ -10,7 +10,7 @@ import ProductSkeleton from "../components/ProductSkeleton";
 
 const Page = () => {
   const searchParams = useSearchParams();
-  const [page, setPage] = useState(+(searchParams.get("page") || 1));
+
   const [filters, setFilters] = useState({
     category: "",
     price: [0, 1000],
@@ -116,9 +116,20 @@ const Page = () => {
             ))}
       </div>
 
-      <Pagination currentPage={page} totalPages={data?.totalPages || 1} />
+      <Pagination
+        currentPage={+(searchParams.get("page") || 1)}
+        totalPages={data?.totalPages || 1}
+      />
     </div>
   );
 };
 
-export default Page;
+const PageWrapper = () => {
+  return (
+    <Suspense>
+      <Page />
+    </Suspense>
+  );
+};
+
+export default PageWrapper;

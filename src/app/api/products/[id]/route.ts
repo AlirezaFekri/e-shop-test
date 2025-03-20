@@ -3,12 +3,13 @@ import path from "path";
 import { NextRequest } from "next/server";
 import { Product } from "../../type";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+interface GetProps {
+  params: Promise<{ id: string }>;
+}
+
+export async function GET(req: NextRequest, { params }: GetProps) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     const filePath = path.join(process.cwd(), "data", "product.json");
 

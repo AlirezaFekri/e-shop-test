@@ -13,7 +13,7 @@ export const getProduct = async (id: number) => {
     const data: Product = responseData;
 
     return data;
-  } catch (error) {
+  } catch {
     throw new Error("failed to get product!");
   }
 };

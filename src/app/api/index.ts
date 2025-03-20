@@ -4,7 +4,7 @@ import { ProductsResponse } from "@/src/api/type";
 
 export const fetchProducts = async (page: number) => {
   try {
-    const response = await apiFetch(PRODUCTS(page, 32), {
+    const response = await apiFetch(PRODUCTS(page), {
       method: "GET",
       next: { revalidate: 5000 },
     });
@@ -13,7 +13,7 @@ export const fetchProducts = async (page: number) => {
     const data: ProductsResponse = responseData;
 
     return data;
-  } catch (error) {
+  } catch {
     throw new Error("failed to get products!");
   }
 };

@@ -1,6 +1,7 @@
 import FavoriteButton from "@/src/components/FavoriteButton";
 import { getProduct } from "./api";
 import ProductAction from "./components/ProductAction";
+import Image from "next/image";
 
 interface PageProps {
   params: Promise<{
@@ -14,7 +15,10 @@ const Page = async ({ params }: PageProps) => {
     <div className="container mx-auto px-4 py-6">
       <div className="flex flex-wrap justify-center">
         <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-6">
-          <img
+          <Image
+            width={0}
+            height={0}
+            sizes="100VW"
             className="w-full h-auto rounded-lg shadow-lg"
             src={product.image}
             alt={product.name}

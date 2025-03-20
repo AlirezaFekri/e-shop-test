@@ -21,7 +21,7 @@ export const useGetProducts = () => {
   const pageParams = searchParams.get("page");
   const page = parseInt(pageParams || "1");
   return useQuery({
-    queryKey: [PRODUCTS(page, 32)],
+    queryKey: [PRODUCTS(page)],
     queryFn: ({ signal }) => getProducts(page, 32, signal),
   });
 };
