@@ -69,7 +69,7 @@ const Page = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex space-x-4 mb-4">
+      <div className="flex flex-col lg:flex-row space-x-4 mb-4">
         <select
           name="category"
           value={filters.category}
@@ -107,6 +107,7 @@ const Page = () => {
       </div>
 
       {error && <p className="text-red-500">{error.message}</p>}
+      {filteredProducts.length === 0 && <p>nothing find with your filter</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {isPending
